@@ -85,8 +85,13 @@ const Generate = () => {
     }, [id, isLoggedIn, loading]);
 
     useEffect(()=>{
-        if(!id && thumbnail){
+        if(!id){
             setThumbnail(null)
+            setTitle("")
+            setAdditionaldetails("")
+            setAspectRatio("16:9")
+            setColorSchemeId(colorSchemes[0].id)
+            setStyle("Bold & Graphic")
         }
     }, [pathname])
 

@@ -109,7 +109,7 @@ export const deleteThumbnail = async (req: Request, res: Response) => {
         const { id } = req.params;
         const { userId } = req.session;
 
-        await Thumbnail.findByIdAndDelete({ _id: id, userId })
+        await Thumbnail.findOneAndDelete({ _id: id, userId })
 
         res.json({ message: "Thumbnail deleted sucessfully" });
     } catch (error: any) {
