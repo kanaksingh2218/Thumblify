@@ -4,6 +4,7 @@ import { GenerateContentConfig, HarmBlockThreshold, HarmCategory } from '@google
 import ai from '../configs/ai.js';
 import path from 'node:path';
 import fs from 'fs';
+import os from 'os';
 import { v2 as cloudinary } from 'cloudinary'
 
 const stylePrompts = {
@@ -71,10 +72,7 @@ export const generateThumbnail = async (req: Request, res: Response) => {
         const arrayBuffer = await response.arrayBuffer();
         const finalBuffer = Buffer.from(arrayBuffer);
         const fileName = `final-output-${Date.now()}.png`;
-        const filePath = path.join('images', fileName);
-
-        // Create the image directory if it doesn't exist
-        fs.mkdirSync('images', { recursive: true })
+        const filePath = path.join(os.tmpdir(), fileName);
 
         //write the final image to the file
         fs.writeFileSync(filePath, finalBuffer!);

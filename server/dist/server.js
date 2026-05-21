@@ -10,7 +10,7 @@ import UserRouter from "./routes/UserRoutes.js";
 await connectDB();
 const app = express();
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:3000', 'https://thumblify-q5a9.vercel.app'],
+    origin: ['http://localhost:5173', 'http://localhost:3000', 'https://thumblify-q5a9.vercel.app', /\.vercel\.app$/],
     credentials: true
 }));
 app.use(express.json());

@@ -1,6 +1,7 @@
 import Thumbnail from '../models/Thumbnail.js';
 import path from 'node:path';
 import fs from 'fs';
+import os from 'os';
 import { v2 as cloudinary } from 'cloudinary';
 const stylePrompts = {
     "Bold & Graphic": "eye-catching thumbnail, bold typography, vibrant colors, expressive facial reactions, dramatic lighting, high contrast, click-worthy composition, professional style",
@@ -56,9 +57,7 @@ export const generateThumbnail = async (req, res) => {
         const arrayBuffer = await response.arrayBuffer();
         const finalBuffer = Buffer.from(arrayBuffer);
         const fileName = `final-output-${Date.now()}.png`;
-        const filePath = path.join('images', fileName);
-        // Create the image directory if it doesn't exist
-        fs.mkdirSync('images', { recursive: true });
+        const filePath = path.join(os.tmpdir(), fileName);
         //write the final image to the file
         fs.writeFileSync(filePath, finalBuffer);
         try {
