@@ -1,0 +1,8 @@
+{
+  "buildCommand": "cd client/reactjs && npm install && npm run build",
+  "outputDirectory": "client/reactjs/dist",
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
