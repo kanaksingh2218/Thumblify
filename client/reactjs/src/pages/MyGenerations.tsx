@@ -113,7 +113,7 @@ const MyGenerations = () => {
                   {/* IMAGE */}
                   <div className={`relative rounded-t-2xl overflow-hidden ${aspectClass} bg-black`}>
                     {thumb.image_url ? (
-                      <img src={thumb.image_url} alt={thumb.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                      <img src={thumb.image_url} alt={thumb.title} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-sm text-zinc-400">
                         {thumb.isGenerating ? "Generating..." : "No Image"}
