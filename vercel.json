@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd client/reactjs && npm install && npm run build",
+  "buildCommand": "cd client/reactjs && npm install --include=dev && npm run build",
   "outputDirectory": "client/reactjs/dist",
   "framework": "vite",
   "rewrites": [
