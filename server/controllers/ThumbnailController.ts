@@ -57,8 +57,8 @@ export const generateThumbnail = async (req: Request, res: Response) => {
 
         // Generate the image using a free alternative API (Pollinations.ai)
         // because Gemini Imagen requires a paid tier.
-        const width = aspect_ratio === '16:9' ? 1280 : 1080;
-        const height = aspect_ratio === '16:9' ? 720 : 1080;
+        const width = aspect_ratio === '16:9' ? 1280 : (aspect_ratio === '9:16' ? 720 : 1080);
+        const height = aspect_ratio === '16:9' ? 720 : (aspect_ratio === '9:16' ? 1280 : 1080);
         
         const encodedPrompt = encodeURIComponent(prompt);
         const url = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=${width}&height=${height}&nologo=true`;
